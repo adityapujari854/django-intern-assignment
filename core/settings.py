@@ -134,3 +134,8 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
 }
+
+CELERY_BROKER_URL = 'redis://localhost:6379/0'
+
+# Development email backend: print emails to terminal
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
