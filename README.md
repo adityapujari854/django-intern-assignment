@@ -6,7 +6,7 @@ Built as part of an internship assignment, the system demonstrates clean integra
 
 ---
 
-##Try the Bot on Telegram
+## Try the Bot on Telegram
 
 📲 Username: [@django_intern_bot](https://t.me/django_intern_bot)
 
