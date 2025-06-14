@@ -1,6 +1,81 @@
-env/
-*.pyc
+# ----------------------------------------
+# Python & Django
+# ----------------------------------------
 __pycache__/
-db.sqlite3
+*.py[cod]
+*.sqlite3
 *.log
+
+# Django migrations
+**/migrations/
+!*/migrations/__init__.py
+
+# Secret configuration
 .env
+.env.*
+
+# Local settings overrides
+core/local_settings.py
+
+# ----------------------------------------
+# Virtual Environments
+# ----------------------------------------
+env/
+venv/
+ENV/
+.venv/
+
+# ----------------------------------------
+# VS Code / IDEs
+# ----------------------------------------
+.vscode/
+.idea/
+*.swp
+
+# ----------------------------------------
+# System Files
+# ----------------------------------------
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ----------------------------------------
+# pycache & test files
+# ----------------------------------------
+*.mo
+*.pot
+coverage/
+htmlcov/
+.tox/
+.nox/
+.cache/
+.pytest_cache/
+pytestdebug.log
+
+# ----------------------------------------
+# Pycharm
+# ----------------------------------------
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# ----------------------------------------
+# Logs & Local Dumps
+# ----------------------------------------
+*.log
+*.pot
+*.orig
+
+# ----------------------------------------
+# Node modules (if frontend added later)
+# ----------------------------------------
+node_modules/
+
+# ----------------------------------------
+# Backup files
+# ----------------------------------------
+*.bak
+*.tmp
+*.temp
+*~
