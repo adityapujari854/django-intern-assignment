@@ -12,7 +12,7 @@ Built as part of an internship assignment, the system demonstrates clean integra
 
 Scan the QR code below to open the bot directly:
 
-<img src="https://github.com/user-attachments/assets/abb3d1fe-ee17-42ac-a563-a2e5fc890c3a" alt="Scan to try the bot" width="150" height="150" />
+<img src="https://github.com/user-attachments/assets/abb3d1fe-ee17-42ac-a563-a2e5fc890c3a" alt="Scan to try the bot" width="150" height="180" />
 
 ---
 
