@@ -8,7 +8,7 @@ Built as part of an internship assignment, the system demonstrates clean integra
 
 ## Try the Bot on Telegram
 
-📲 Username: [@django_intern_bot](https://t.me/django_intern_bot)
+Username: [@django_intern_bot](https://t.me/django_intern_bot)
 
 Scan the QR code below to open the bot directly:
 
