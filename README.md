@@ -6,9 +6,9 @@ Built as part of an internship assignment, the system demonstrates clean integra
 
 ---
 
-##Try the Bot on Telegram
+## Try the Bot on Telegram
 
-📲 Username: [@django_intern_bot](https://t.me/django_intern_bot)
+Username: [@django_intern_bot](https://t.me/django_intern_bot)
 
 Scan the QR code below to open the bot directly:
 
@@ -39,7 +39,7 @@ Scan the QR code below to open the bot directly:
 
 ---
 
-## ⚙Setup Instructions
+## Setup Instructions
 
 ### 1. Clone the repository
 
@@ -53,31 +53,62 @@ env\Scripts\activate  # On Windows
 
 ### 3. Install dependencies
 
+```bash
 pip install -r requirements.txt
-
+```
 ### 4. Add environment variables
 
 Create a `.env` file in the root directory:
-
+```bash
 SECRET_KEY=your-django-secret-key
 TELEGRAM_BOT_TOKEN=your-telegram-bot-token
 DEBUG=True
+```
 
 ### 5. Apply migrations
 
+```bash
 python manage.py makemigrations
 python manage.py migrate
+```
 
 ### 6. Run the development server
 
+```bash
 python manage.py runserver
-
+```
 ### 7. Run the Telegram bot
 
+```bash
 python telegram_bot/run_bot.py
+```
 
 ---
 
+## API Endpoints
+
+| Method | Endpoint          | Auth  | Description                    |
+| ------ | ----------------- | ----- | ------------------------------ |
+| GET    | `/api/public/`    | No  | Returns public access message  |
+| GET    | `/api/protected/` | JWT | Returns user-specific greeting |
+| POST   | `/api/token/`     | No  | Obtain JWT access & refresh    |
+
+### Token Example
+
+```bash
+curl -X POST http://127.0.0.1:8000/api/token/ \
+  -H "Content-Type: application/json" \
+  -d '{"username": "user", "password": "pass"}'
+```
+
+### Protected Example
+
+```bash
+curl http://127.0.0.1:8000/api/protected/ \
+  -H "Authorization: Bearer your_access_token"
+```
+
+---
 ## Telegram Bot Commands
 
 | Command   | Description                                     |
