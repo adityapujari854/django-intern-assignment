@@ -8,11 +8,10 @@ from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 from asgiref.sync import sync_to_async
 from django.utils.timezone import localtime
 
-# -------------------------------
-# Django + Environment Setup
-# -------------------------------
+# Load environment variables from .env file
 load_dotenv()
 
+# Set up Django environment
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(BASE_DIR)
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "core.settings")
@@ -21,9 +20,7 @@ django.setup()
 from api.models import TelegramUser
 from django.conf import settings
 
-# -------------------------------
-# Async-safe DB helpers
-# -------------------------------
+# Async function to create or fetch user from database
 @sync_to_async
 def get_or_create_user(user):
     return TelegramUser.objects.get_or_create(
@@ -35,6 +32,7 @@ def get_or_create_user(user):
         }
     )
 
+# Async function to get user status info from database
 @sync_to_async
 def get_user_status(chat_id):
     try:
@@ -47,9 +45,7 @@ def get_user_status(chat_id):
     except TelegramUser.DoesNotExist:
         return "⚠️ You are not registered in the system."
 
-# -------------------------------
-# /start Command Handler
-# -------------------------------
+# Handler for /start command
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user = update.effective_user
     await get_or_create_user(user)
@@ -57,27 +53,23 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         f"Hello {user.first_name or 'there'}! You’ve been registered successfully."
     )
 
-# -------------------------------
-# /status Command Handler
-# -------------------------------
+# Handler for /status command
 async def status(update: Update, context: ContextTypes.DEFAULT_TYPE):
     chat_id = update.effective_user.id
     message = await get_user_status(chat_id)
     await update.message.reply_text(message)
 
-# -------------------------------
-# Entry Point
-# -------------------------------
+# Main entry point for bot execution
 if __name__ == '__main__':
     import asyncio
 
-    # Windows fix for event loop policy
+    # Windows-specific event loop fix
     try:
         asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
     except Exception:
         pass
 
-    # Build the Telegram bot app
+    # Build the Telegram application
     app = ApplicationBuilder()\
         .token(settings.TELEGRAM_BOT_TOKEN)\
         .build()

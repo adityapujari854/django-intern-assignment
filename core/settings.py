@@ -13,24 +13,19 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 from decouple import config
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+# Base directory of the project
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
+# Secret key from environment file
 SECRET_KEY = config('SECRET_KEY')
 
-# SECURITY WARNING: don't run with debug turned on in production!
+# Enable debug mode based on .env
 DEBUG = config('DEBUG', cast=bool)
 
+# Allowed hosts from .env
 ALLOWED_HOSTS = config('ALLOWED_HOSTS').split(',')
 
-
-# Application definition
-
+# Installed apps used in the project
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -44,6 +39,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
 ]
 
+# Middleware used during request/response cycle
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
@@ -55,8 +51,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# Root URL configuration
 ROOT_URLCONF = 'core.urls'
 
+# Templates config
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -72,12 +70,10 @@ TEMPLATES = [
     },
 ]
 
+# WSGI application path
 WSGI_APPLICATION = 'core.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/5.2/ref/settings/#databases
-
+# Database setup (SQLite used here)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -85,10 +81,7 @@ DATABASES = {
     }
 }
 
-
-# Password validation
-# https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
-
+# Password validation rules
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -104,40 +97,33 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
-# Internationalization
-# https://docs.djangoproject.com/en/5.2/topics/i18n/
-
+# Language and timezone settings
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.2/howto/static-files/
-
+# URL for static files
 STATIC_URL = 'static/'
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
-
+# Default type for auto primary key fields
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Allow CORS from all origins (for dev)
 CORS_ALLOW_ALL_ORIGINS = True
 
+# Use JWT for authentication in DRF
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
 }
 
+# Redis broker URL for Celery
 CELERY_BROKER_URL = 'redis://localhost:6379/0'
 
-# Development email backend: print emails to terminal
+# Console backend for sending email in dev
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
+# Telegram bot token from .env
 TELEGRAM_BOT_TOKEN = config('TELEGRAM_BOT_TOKEN')
