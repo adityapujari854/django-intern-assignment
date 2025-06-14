@@ -139,3 +139,5 @@ CELERY_BROKER_URL = 'redis://localhost:6379/0'
 
 # Development email backend: print emails to terminal
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+TELEGRAM_BOT_TOKEN = config('TELEGRAM_BOT_TOKEN')
