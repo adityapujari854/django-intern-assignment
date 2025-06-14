@@ -97,4 +97,4 @@ Thanks to Internshala for the opportunity to build this assignment. This project
 
 * ✉️ Email: [adityapujari542@gmail.com](mailto:adityapujari542@gmail.com)
 * 🌐 Portfolio: [https://adityapujari854.github.io/My-Portfolio](https://adityapujari854.github.io/My-Portfolio)
-* 💼 LinkedIn: [Aditya Pujari](https://www.linkedin.com/in/adityapujari854)
+* 💼 LinkedIn: [https://www.linkedin.com/in/adityapujari854](https://www.linkedin.com/in/adityapujari854)
