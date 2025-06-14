@@ -68,54 +68,12 @@ python telegram_bot/run_bot.py
 
 ---
 
-## API Endpoints
-
-| Method | Endpoint          | Description                      | Auth Required |
-| ------ | ----------------- | -------------------------------- | ------------- |
-| GET    | `/api/public/`    | Public test endpoint             | No            |
-| GET    | `/api/protected/` | JWT-authenticated view           | Yes           |
-| POST   | `/api/token/`     | Get JWT tokens using credentials | No            |
-
----
-
-## API Testing (Using cURL)
-
-### Get JWT Token
-
-curl -X POST http://127.0.0.1:8000/api/token/ \
-  -H "Content-Type: application/json" \
-  -d '{"username": "your_username", "password": "your_password"}'
-
-### Public Endpoint
-
-curl http://127.0.0.1:8000/api/public/
-
-### Protected Endpoint (JWT Required)
-
-curl http://127.0.0.1:8000/api/protected/ \
-  -H "Authorization: Bearer your_access_token"
-
----
-
 ## Telegram Bot Commands
 
 | Command   | Description                                     |
 | --------- | ----------------------------------------------- |
 | `/start`  | Registers the user in the database              |
 | `/status` | Displays stored user info (chat ID, name, time) |
-
----
-
-## Folder Structure (Simplified)
-
-```
-├── core/               # Django settings & app config
-├── api/                # User models and API views
-├── telegram_bot/       # Telegram command handlers
-├── .env                # Environment variables (not committed)
-├── manage.py           # Django entry point
-├── requirements.txt    # Project dependencies
-```
 
 ---
 
