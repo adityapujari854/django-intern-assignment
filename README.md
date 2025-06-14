@@ -6,6 +6,15 @@ Built as part of an internship assignment, the system demonstrates clean integra
 
 ---
 
+## Try the Bot on Telegram
+
+Username: [@django_intern_bot](https://t.me/django_intern_bot)
+
+Scan the QR code below to open the bot directly:
+![image](https://github.com/user-attachments/assets/abb3d1fe-ee17-42ac-a563-a2e5fc890c3a)
+
+---
+
 ## Features
 
 - `/start` command to register users into the Django database  
