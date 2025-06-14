@@ -1,0 +1,34 @@
+services:
+  - type: web
+    name: django-api
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn core.wsgi --log-file -
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: core.settings
+      - key: SECRET_KEY
+        value: your_secret_key
+      - key: TELEGRAM_BOT_TOKEN
+        value: your_telegram_token
+      - key: DEBUG
+        value: true
+      - key: ALLOWED_HOSTS
+        value: 0.0.0.0,render.com
+
+  - type: worker
+    name: telegram-bot
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python telegram_bot/run_bot.py
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: core.settings
+      - key: SECRET_KEY
+        value: your_secret_key
+      - key: TELEGRAM_BOT_TOKEN
+        value: your_telegram_token
+      - key: DEBUG
+        value: true
+      - key: ALLOWED_HOSTS
+        value: 0.0.0.0,render.com
